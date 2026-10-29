@@ -1,14 +1,12 @@
-% Numeric result cells intentionally empty. See table_registry.csv.
 \begin{table}[t]
-\caption{\textbf{RQ2: sharing versus task isolation.} Aggregate within each seed before uncertainty estimation. A client is a task head referencing the same physical unit. ``Drop'' is the mean accuracy loss on its actual clients after removing that unit's contribution; this is dependence, not a semantic-abstraction certificate.}
-\label{tab:reuse}\centering\small\setlength{\tabcolsep}{3.3pt}
-\begin{tabularx}{\linewidth}{Yrrrr}
-\toprule
-Method & Units & Clients & Reuse & Drop\\\midrule
-Independent &\blank&\blank&\blank&\blank\\
-FAMP &\blank&\blank&\blank&\blank\\
-FAMP, unrelated &\blank&\blank&\blank&\blank\\
-FAMP, no composition &\blank&\blank&\blank&\blank\\
-\bottomrule
-\end{tabularx}
-\end{table}
+\caption{Evidence for sharing. No effect size is reconstructed from the qualitative synthetic summary.}
+\label{tab:reuse}\centering\small
+\begin{tabularx}{\linewidth}{YY}\toprule
+Comparison & Supported conclusion\\\midrule
+Arithmetic vs.\ independent & No robust gain, three seeds\\
+Nonlinear vs.\ independent & No robust gain, three seeds\\
+Small CIFAR, 2\,MiB & No admitted or shared units\\
+Strong CIFAR, 64\,MiB & No admitted or shared units\\
+Client-removal ablations & No quantitative claim available\\
+\bottomrule\end{tabularx}\end{table}
+

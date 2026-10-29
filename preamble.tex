@@ -2,6 +2,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage{microtype}
 \usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,calc,shapes.geometric,backgrounds}
+\newcommand{\designfigure}[1]{\IfFileExists{figures/#1.pdf}{\includegraphics[width=\textwidth]{figures/#1.pdf}}{\begingroup\input{figures/inline/#1.tex}\endgroup}}
 \usepackage{booktabs,tabularx,multirow,array}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{xcolor}
@@ -9,7 +12,8 @@
 \usepackage{hyperref}
 \usepackage{mlsys2025}
 \usepackage{enumitem}
-\newcommand{\famp}{\textsc{Famp}}
+\usepackage{placeins}
+\newcommand{\famp}{\textsc{E-Mem}}
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\ind}{\mathbf{1}}
@@ -21,5 +25,6 @@
 \newtheorem{proposition}{Proposition}
 \newtheorem{definition}{Definition}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
-\hypersetup{pdfauthor={Anonymous authors},pdfsubject={Research draft; confirmatory tables intentionally empty}}
-\mlsystitlerunning{FAMP: Executable Memory for Byte-Budgeted Continual Learning}
+\hypersetup{pdfauthor={Anonymous authors},pdfsubject={Frozen development study of executable memory}}
+\mlsystitlerunning{Executable Memory under Admission Constraints}
+

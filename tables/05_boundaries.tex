@@ -1,15 +1,12 @@
-% Numeric result cells intentionally empty. See table_registry.csv.
 \begin{table}[t]
-\caption{\textbf{RQ5: operating boundaries.} Each row is evaluated against the matched baseline on the same inputs and task order. ``Reject'' reports declined substitution, not a refused prediction. Low rejection is not inherently favorable.}
-\label{tab:limits}\centering\small\setlength{\tabcolsep}{3.3pt}
-\begin{tabularx}{\linewidth}{Yrrrr}
-\toprule
-Condition & ACC & \shortstack{Essential\\ACC} & Reject & Bytes\\\midrule
-Related, IID &\blank&\blank&\blank&\blank\\
-Related, scale shift &\blank&\blank&\blank&\blank\\
-Unrelated tasks &\blank&\blank&\blank&\blank\\
-Small acceptance set &\blank&\blank&\blank&\blank\\
-Long stream / cap hit &\blank&\blank&\blank&\blank\\
-\bottomrule
-\end{tabularx}
-\end{table}
+\caption{Observed boundaries and untested scope. Hypotheses and absent measurements are not findings.}
+\label{tab:limits}\centering\small
+\begin{tabularx}{\linewidth}{YY}\toprule
+Condition & Evidence boundary\\\midrule
+Small CIFAR, 2\,MiB & Two label-based barriers; response passes\\
+Strong CIFAR, 64\,MiB & No acquisition above chance; root cause unresolved\\
+Synthetic sharing & No robust gain over independent\\
+Other image budgets & Equal policies, outcomes not inferred\\
+Shift, long streams, energy & No quantitative finding asserted\\
+\bottomrule\end{tabularx}\end{table}
+

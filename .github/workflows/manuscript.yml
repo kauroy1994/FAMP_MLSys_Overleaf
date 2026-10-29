@@ -1,0 +1,47 @@
+name: Compile manuscript
+on:
+  push:
+    branches: [revision/mlsys2027-frozen-evidence]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  latex:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install LaTeX tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y latexmk texlive-latex-extra texlive-fonts-recommended texlive-science poppler-utils unzip
+      - name: Use the official MLSys 2025 style required for 2027
+        run: |
+          curl --fail --location --retry 3 https://media.mlsys.org/Conferences/MLSYS2025/mlsys2025style.zip --output /tmp/mlsys-style.zip
+          unzip -q /tmp/mlsys-style.zip -d /tmp/mlsys-style
+          style=$(find /tmp/mlsys-style -name mlsys2025.sty -print -quit)
+          test -n "$style"
+          cp "$style" mlsys2025.sty
+          sha256sum /tmp/mlsys-style.zip mlsys2025.sty | tee official-style-sha256.txt
+      - name: Compile both documents and reject unresolved references
+        run: |
+          latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+          latexmk -pdf -interaction=nonstopmode -halt-on-error appendix.tex
+          if grep -E 'Citation .* undefined|Reference .* undefined|There were undefined references' main.log appendix.log; then exit 1; fi
+          pdfinfo main.pdf
+          pdfinfo appendix.pdf
+          python3 scripts/check_page_limit.py
+      - name: Upload fresh PDFs and build logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: manuscript-build
+          path: |
+            main.pdf
+            appendix.pdf
+            main.log
+            appendix.log
+            main.aux
+            official-style-sha256.txt
+          if-no-files-found: error

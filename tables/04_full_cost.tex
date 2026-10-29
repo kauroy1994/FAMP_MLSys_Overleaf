@@ -1,15 +1,17 @@
-% Numeric result cells intentionally empty. See table_registry.csv.
-\begin{table*}[t]
-\caption{\textbf{RQ4: complete storage and runtime decomposition at matched accuracy.} Shared weights are counted once, but heads, witnesses, and metadata are not free. The published-state cap excludes temporary work; peak device/host allocations and container overhead are separate measurements. All numeric cells await the declared hardware protocol.}
+\begin{table}[t]
+\caption{Strong-run reported costs (Cell 22). No matched strong baseline or speedup estimate is available.}
 \label{tab:cost}\centering\small
-\begin{tabular}{lrrrrrrr}
-\toprule
-Method & Base KiB & Units KiB & Heads KiB & Witness/meta KiB & Episodes KiB & Peak RAM MiB & Search (s)\\\midrule
-Packed replay &\blank&\blank&\blank&\blank&\blank&\blank&\blank\\
-DER++ &\blank&\blank&\blank&\blank&\blank&\blank&\blank\\
-Latent replay &\blank&\blank&\blank&\blank&\blank&\blank&\blank\\
-Independent units &\blank&\blank&\blank&\blank&\blank&\blank&\blank\\
-FAMP &\blank&\blank&\blank&\blank&\blank&\blank&\blank\\
-\bottomrule
-\end{tabular}
-\end{table*}
+\begin{tabularx}{\linewidth}{Yr}\toprule
+Counter & Value\\\midrule
+Persistent byte cap & 67,108,864\\
+Final persistent ledger bytes & 67,106,189\\
+Remaining ledger bytes & 2,675\\
+Learning timer (seconds) & 796.2481\\
+Worker duration (seconds) & 848.44\\
+Training MACs proxy & $3.62137\times10^{15}$\\
+Published units / shared units & 0 / 0\\
+Fallback tasks & 10\\
+Checkpoint size / peak RAM & Unavailable\\
+Inference latency / energy & Unavailable\\
+\bottomrule\end{tabularx}\end{table}
+
