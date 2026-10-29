@@ -45,16 +45,3 @@ jobs:
             main.aux
             official-style-sha256.txt
           if-no-files-found: error
-*** Add File: work/FAMP_MLSys_Overleaf/scripts/check_page_limit.py
-"""Check the content endpoint in the compiled main paper; do not train models."""
-from pathlib import Path
-import re
-
-aux = Path('main.aux').read_text(encoding='utf-8')
-match = re.search(r'\\newlabel\{mainlastpage\}\{\{[^}]*\}\{(\d+)\}', aux)
-if not match:
-    raise SystemExit('Missing mainlastpage label; inspect the build.')
-page = int(match.group(1))
-print(f'Main content ends on page {page} (limit: 10). Inspect PDF floats/layout too.')
-if page > 10:
-    raise SystemExit('Main content exceeds the ten-page limit.')
