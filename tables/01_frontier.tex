@@ -1,0 +1,24 @@
+% Numeric result cells intentionally empty. See table_registry.csv.
+\begin{table*}[t]
+\caption{\textbf{RQ1: primary accuracy--resource comparison.} Each row is a validation-selected operating point, not the best test run. ACC is final accuracy; ACQ is acquisition; F is max-based forgetting (all in percent or percentage points). $B^*$ is the minimum measured persistent-state cap meeting the predeclared noninferiority target; runtime includes unsuccessful search and acceptance. Report paired confidence intervals and actual capped-state occupancy in the completed table. Blank cells denote unmeasured confirmatory outcomes.}
+\label{tab:frontier}
+\centering\small
+\begin{tabular}{llrrrrrr}
+\toprule
+Workload & Method & ACC & ACQ & F & $B^*$ (KiB) & Train (s) & Infer (ms)\\\midrule
+Arithmetic & Packed replay &\blank&\blank&\blank&\blank&\blank&\blank\\
+Arithmetic & Independent units &\blank&\blank&\blank&\blank&\blank&\blank\\
+Arithmetic & FAMP &\blank&\blank&\blank&\blank&\blank&\blank\\
+Nonlinear & Packed replay &\blank&\blank&\blank&\blank&\blank&\blank\\
+Nonlinear & Independent units &\blank&\blank&\blank&\blank&\blank&\blank\\
+Nonlinear & FAMP &\blank&\blank&\blank&\blank&\blank&\blank\\
+CIFAR-100 TIL & Packed replay &\blank&\blank&\blank&\blank&\blank&\blank\\
+CIFAR-100 TIL & DER++ &\blank&\blank&\blank&\blank&\blank&\blank\\
+CIFAR-100 TIL & Latent replay &\blank&\blank&\blank&\blank&\blank&\blank\\
+CIFAR-100 TIL & AHR &\blank&\blank&\blank&\blank&\blank&\blank\\
+CIFAR-100 TIL & MNTDP &\blank&\blank&\blank&\blank&\blank&\blank\\
+CIFAR-100 TIL & Independent units &\blank&\blank&\blank&\blank&\blank&\blank\\
+CIFAR-100 TIL & FAMP &\blank&\blank&\blank&\blank&\blank&\blank\\
+\bottomrule
+\end{tabular}
+\end{table*}

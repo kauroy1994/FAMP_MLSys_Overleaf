@@ -1,0 +1,14 @@
+% Numeric result cells intentionally empty. See table_registry.csv.
+\begin{table}[t]
+\caption{\textbf{RQ2: sharing versus task isolation.} Aggregate within each seed before uncertainty estimation. A client is a task head referencing the same physical unit. ``Drop'' is the mean accuracy loss on its actual clients after removing that unit's contribution; this is dependence, not a semantic-abstraction certificate.}
+\label{tab:reuse}\centering\small\setlength{\tabcolsep}{3.3pt}
+\begin{tabularx}{\linewidth}{Yrrrr}
+\toprule
+Method & Units & Clients & Reuse & Drop\\\midrule
+Independent &\blank&\blank&\blank&\blank\\
+FAMP &\blank&\blank&\blank&\blank\\
+FAMP, unrelated &\blank&\blank&\blank&\blank\\
+FAMP, no composition &\blank&\blank&\blank&\blank\\
+\bottomrule
+\end{tabularx}
+\end{table}

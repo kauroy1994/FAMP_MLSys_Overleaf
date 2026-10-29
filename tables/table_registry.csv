@@ -1,0 +1,23 @@
+table,research_question,metric,source,aggregation,execution_status
+T1,RQ1,accuracy,all_runs.csv:accuracy,"mean over tasks, orders within seed, then paired seeds",implemented pilot; confirmation pending
+T1,RQ1,acquisition,all_runs.csv:acquisition,diagonal of task accuracy matrix,implemented pilot; confirmation pending
+T1,RQ1,forgetting,all_runs.csv:forgetting,max acquired-to-final decrease; final included in max,implemented pilot; confirmation pending
+T1,RQ1,B_star,validation-selected operating point manifest,minimum tested cap meeting fixed noninferiority targets,requires separate method-level validation; not inferred from pilot test points
+T1,RQ1,training_seconds,all_runs.csv:end_to_end_learning_seconds,includes learner and final serialization; observer separate,implemented CPU pilot; competitive image/GPU confirmation pending
+T2,RQ2,units,all_runs.csv:units,physical unique parameter objects,implemented pilot
+T2,RQ2,clients_per_unit,reuse_ablation.csv:dependents,deduplicate unit then average; not client-weighted,implemented pilot
+T2,RQ2,reuse_admissions,events.json:action,reuse + compose divided by all tasks,implemented pilot
+T2,RQ2,unit_ablation_drop,reuse_ablation.csv:drop,"clients within unit, units within seed; immediate deletion",implemented pilot
+T2,RQ2,no_composition,clean composition-off configuration,same singleton shortlist; only pairs disabled,required ablation not implemented as an isolated pilot arm
+T3,RQ3,coverage,events.json:action,all committed tasks / all attempted tasks,implemented pilot
+T3,RQ3,acceptance_harm_bound,events.json:validation,IID or class-stratified rule explicitly recorded,implemented pilot; this is not fresh observer harm
+T3,RQ3,fresh_harm,independent candidate-snapshot observer audit,new data never used for proposal acceptance,required; rejected candidate snapshots not retained by current pilot
+T3,RQ3,response_RMS,events.json:validation.response_rmse,four seeded probability-difference tests,implemented pilot
+T4,RQ4,base_unit_head_witness_metadata_replay_bytes,all_runs.csv:*_bytes; ledger.csv,"tensor widths + canonical metadata, unique units counted once",implemented pilot
+T4,RQ4,file_bytes,all_runs.csv:checkpoint_file_bytes,"actual serialized bytes, not payload bytes",implemented pilot
+A3,RQ4,peak_host_GPU,isolated learner profiling window,all optimizer/candidate/transient allocations; no observer contamination,required; CPU process peak and training-only GPU peak not measured
+A3,RQ4,latency_p95,task-mixture benchmark batch1/128,warm and cold separately; repetitions on common device,required; pilot has only last-task batch latency microbenchmark
+A3,RQ4,energy_J,documented supported power counter integration,not inferred from runtime or nominal TDP,required when supported; otherwise explicitly unavailable
+T5,RQ5,unrelated_and_long_stream,stress profile; unrelated generator,fixed independent task rules; byte cap remains active,implemented runner; full stress profile not executed
+T5,RQ5,shift_and_essential_accuracy,observer-only shifted/essential runner,"subset defined by oracle rule, never model error",specified protocol; full observer runner pending
+T5,RQ5,small_acceptance_and_teacher,configuration sweeps + events.json,report precision rejection separately from observed harm,existing mechanism; confirmatory sweep pending

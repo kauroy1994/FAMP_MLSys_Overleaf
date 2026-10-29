@@ -1,0 +1,28 @@
+\documentclass[tikz,border=4pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{helvet,amsmath,amssymb}
+\renewcommand{\familydefault}{\sfdefault}
+\usetikzlibrary{arrows.meta,positioning,fit,calc,shapes.geometric,backgrounds}
+\definecolor{navy}{HTML}{193A56}
+\definecolor{teal}{HTML}{167D8D}
+\definecolor{amber}{HTML}{B87420}
+\definecolor{pale}{HTML}{EDF3F6}
+\definecolor{mint}{HTML}{EAF5F2}
+\definecolor{warm}{HTML}{FFF3E3}
+\definecolor{gray}{HTML}{586772}
+\tikzset{box/.style={draw=navy!60,rounded corners=2pt,fill=pale,align=center,inner sep=6pt,font=\sffamily\fontsize{8}{9}\selectfont},unit/.style={box,draw=teal,fill=mint},gate/.style={box,draw=amber,fill=warm},arr/.style={-{Latex[length=2.2mm]},thick,draw=navy},note/.style={font=\sffamily\footnotesize,text=gray,align=left},label/.style={font=\sffamily\bfseries\small,text=navy}}
+\begin{document}\begin{tikzpicture}[x=1cm,y=1cm]
+
+\node[label,anchor=west] at (0,4.8) {A CANDIDATE IS A PROPOSAL, NOT YET A MEMORY};
+\node[box,text width=3.0cm] (one) at (1.65,3.1) {\textbf{1. Select once}\\Fit on training data; choose on selection data.\\Do not inspect acceptance yet.};
+\node[gate,text width=3.0cm] (harm) at (5.4,3.1) {\textbf{2. Bound harm}\\$H=1$ when teacher correct\\and candidate wrong\\Require upper bound $\leq\epsilon$.};
+\node[gate,text width=3.0cm] (resp) at (9.2,3.1) {\textbf{3. Check responses}\\Change input, keep task fixed.\\Compare teacher/student\\probability differences.};
+\node[gate,text width=3.0cm] (cost) at (13,3.1) {\textbf{4. Check full bytes}\\Units + heads + certificates\\+ fallback + residual replay\\must fit $B$.};
+\draw[arr] (one)--(harm);\draw[arr] (harm)--(resp);\draw[arr] (resp)--(cost);
+\node[unit,text width=5.3cm] (yes) at (10.85,.8) {\textbf{All checks pass: publish route}\\Remove its ordinary episodes; preserve bounded witnesses.};
+\node[box,text width=5.3cm] (no) at (3.3,.8) {\textbf{Any failed check: keep fallback}\\Keep the mutable fallback and bounded episodic protection.};
+\draw[arr] (cost.south)--(yes.north);
+\draw[arr] (harm.south)--++(0,-.35)-|(no.north);
+\draw[arr] (resp.south)--++(0,-.35)-|(no.north);
+\node[note,text width=14.5cm,anchor=north west] at (0,-.2) {The risk statement assumes independent acceptance data (with class-conditional bounds for stratified sampling). Perturbation agreement is a finite teacher-consistency check, not a proof of a causal or symbolic abstraction.};
+\end{tikzpicture}\end{document}
