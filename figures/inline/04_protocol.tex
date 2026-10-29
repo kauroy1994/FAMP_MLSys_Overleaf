@@ -1,0 +1,26 @@
+\resizebox{\textwidth}{!}{%
+\definecolor{navy}{HTML}{193A56}
+\definecolor{teal}{HTML}{167D8D}
+\definecolor{amber}{HTML}{B87420}
+\definecolor{pale}{HTML}{EDF3F6}
+\definecolor{mint}{HTML}{EAF5F2}
+\definecolor{warm}{HTML}{FFF3E3}
+\definecolor{gray}{HTML}{586772}
+\tikzset{box/.style={draw=navy!60,rounded corners=2pt,fill=pale,align=center,inner sep=6pt,font=\sffamily\fontsize{8}{9}\selectfont},unit/.style={box,draw=teal,fill=mint},gate/.style={box,draw=amber,fill=warm},arr/.style={-{Latex[length=2.2mm]},thick,draw=navy},note/.style={font=\sffamily\footnotesize,text=gray,align=left},label/.style={font=\sffamily\bfseries\small,text=navy}}
+\begin{tikzpicture}[x=1cm,y=1cm]
+
+\node[label,anchor=west] at (0,5.4) {INFORMATION FIREWALL AND RESEARCH-QUESTION TRACEABILITY};
+\node[box,text width=3.1cm,minimum height=1.2cm] (tr) at (1.65,4) {\textbf{Training split}\\Fallback, new units and\\candidate task heads};
+\node[box,text width=3.1cm,minimum height=1.2cm] (se) at (5.4,4) {\textbf{Selection split}\\One proposal per task;\\cost-aware shortlist};
+\node[gate,text width=3.1cm,minimum height=1.2cm] (ac) at (9.15,4) {\textbf{Acceptance split}\\Independent risk and\\response decision};
+\node[unit,text width=3.1cm,minimum height=1.2cm] (te) at (12.9,4) {\textbf{Untouched test split}\\Observer only; never\\changes a decision};
+\draw[arr] (tr)--(se);\draw[arr] (se)--(ac);\draw[arr] (ac)--(te);
+\node[label,anchor=west] at (0,2.65) {FIVE QUESTIONS REQUIRE FIVE DISTINCT FORMS OF EVIDENCE};
+\node[box,text width=2.35cm,minimum height=2.15cm] at (1.25,1.25) {\textbf{RQ1}\par Accuracy versus\\complete resources\\\textit{Does it help?}};
+\node[unit,text width=2.35cm,minimum height=2.15cm] at (4.3,1.25) {\textbf{RQ2}\par Unit IDs +\\sharing ablation\\\textit{Is sharing useful?}};
+\node[gate,text width=2.35cm,minimum height=2.15cm] at (7.35,1.25) {\textbf{RQ3}\par Harm bounds +\\response checks\\\textit{Is admission reliable?}};
+\node[box,text width=2.35cm,minimum height=2.15cm] at (10.4,1.25) {\textbf{RQ4}\par Bytes / time /\\latency / workspace\\\textit{What does it cost?}};
+\node[box,text width=2.35cm,minimum height=2.15cm] at (13.45,1.25) {\textbf{RQ5}\par Shift / unrelated\\tasks / long streams\\\textit{When does it fail?}};
+\end{tikzpicture}
+}
+
